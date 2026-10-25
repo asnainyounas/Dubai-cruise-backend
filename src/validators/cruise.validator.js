@@ -32,6 +32,8 @@ const faqSchema = z.object({
   answer: z.string().trim().max(1000),
 });
 const inclusionsField = z.array(z.string().trim().max(200)).optional();
+const highlightsField = z.array(z.string().trim().max(200)).max(30).optional();
+const showsField = z.array(z.string().trim().max(100)).max(15).optional();
 const imagesField = z.array(imageSchema).optional();
 const faqsField = z.array(faqSchema).optional();
 const seoTitleField = z.string().trim().max(70).optional();
@@ -65,6 +67,8 @@ const cruiseCreateSchema = z
     currency: currencyField,
     images: imagesField,
     inclusions: inclusionsField,
+    highlights: highlightsField,
+    shows: showsField,
     faqs: faqsField,
     seoTitle: seoTitleField,
     seoDescription: seoDescField,
@@ -93,6 +97,8 @@ const cruiseUpdateSchema = z
     currency: currencyField,
     images: imagesField,
     inclusions: inclusionsField,
+    highlights: highlightsField,
+    shows: showsField,
     faqs: faqsField,
     seoTitle: seoTitleField,
     seoDescription: seoDescField,

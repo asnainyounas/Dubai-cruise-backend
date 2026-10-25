@@ -26,6 +26,14 @@ const cruiseSchema = new mongoose.Schema({
   currency: { type: String, default: 'AED', trim: true, maxlength: 10 },
   images: [imageSchema],
   inclusions: [{ type: String, trim: true, maxlength: 200 }],
+  highlights: {
+    type: [{ type: String, trim: true, maxlength: 200 }],
+    validate: { validator: (v) => v.length <= 30, message: 'highlights cannot have more than 30 items' },
+  },
+  shows: {
+    type: [{ type: String, trim: true, maxlength: 100 }],
+    validate: { validator: (v) => v.length <= 15, message: 'shows cannot have more than 15 items' },
+  },
   faqs: [faqSchema],
   seoTitle: { type: String, trim: true, maxlength: 70 },
   seoDescription: { type: String, trim: true, maxlength: 160 },

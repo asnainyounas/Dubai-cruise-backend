@@ -27,6 +27,8 @@ router.delete('/cruises/:id', cruiseController.adminDeleteCruise);
 // ---------------------------------------------------------------------------
 router.get('/departures', departureController.adminListDepartures);
 router.post('/departures', departureController.adminCreateDeparture);
+// bulk MUST be registered before /:id so "bulk" is not matched as an ObjectId
+router.post('/departures/bulk', departureController.adminBulkCreateDepartures);
 router.patch('/departures/:id', departureController.adminUpdateDeparture);
 router.delete('/departures/:id', departureController.adminDeleteDeparture);
 
