@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const mongoSanitize = require('express-mongo-sanitize');
 
 const { globalLimiter } = require('./middleware/rateLimiters');
+const markdownNegotiation = require('./middleware/markdownNegotiation');
 const notFound = require('./middleware/notFound');
 const errorHandler = require('./middleware/errorHandler');
 const { CLIENT_URL, NODE_ENV } = require('./config/env');
@@ -56,6 +57,9 @@ app.use(mongoSanitize());
 
 // Global rate limiter
 app.use(globalLimiter);
+
+// Markdown content negotiation
+app.use(markdownNegotiation);
 
 // Routes
 const indexRouter = require('./routes');
